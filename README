@@ -1,0 +1,52 @@
+odep - Generate dependency dot graph from object files and static library files.
+
+This is useful when compiling a large or small projects to visualize the 
+dependencies at the object level.
+
+This is a utility that, given a list of static library files and/or object
+files will generate a dot file that can be used to graph the dependencies 
+between libraries and object files. It parses all fo the symbols in the files
+and finds their dependencies.  You can even list external dependencies.
+
+Dependencies
+------------
+There are no compilation dependencies.
+
+
+Bulding
+-------
+./autogen.sh
+./configure
+./make
+
+
+Usage
+-----
+
+usage: ./odep -o OUTPUT [OPTIONS] PATH ...
+
+-o OUTPUT     Output dot file
+PATH          Path to a directory or file
+-r, -R        Recursive search
+-a            Parse library files (.a)
+-j            Parse object files (.o) (default)
+-u            Graph dependencies on undefined symbols
+-h, -help     Show this menu
+
+
+Running
+-------
+cd src
+./odep -a -o odep.out .
+
+There is also an odepwrapper script in src/ that shows how to run it.
+
+
+Viewing the Graph
+-----------------
+WARNING: There is a known issue displaying lablels in dotty from graphviz. It's been broken
+for awhile now and the developers claim they can't reproduce it. It looks to be a font issue.
+
+To use the dot file you'll need the graphiz package installed from: http://www.graphviz.org/
+zgrviewer also provides a nice viewer, but it still needs graphviz tools.
+

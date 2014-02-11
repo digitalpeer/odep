@@ -1,0 +1,17 @@
+.deps
+*.a
+*.o
+Makefile.in
+Makefile
+Doxyfile
+autom4te.cache
+aclocal.m4
+config.*
+configure
+depcomp
+doc/doxygen
+install-sh
+missing
+src/odep
+stamp-h
+stamp-h1

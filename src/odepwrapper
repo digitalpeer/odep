@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# run odep with given arguments and display a graph using dotty
+
+die () {
+    echo >&2 "$@"
+    exit 1
+}
+
+export PATH=.:$PATH
+
+set -e
+
+ODEP_OUT=.odep.tmp
+NEATO_OUT=.odep.tmp2
+
+odep -a -r -o $ODEP_OUT $1
+neato $ODEP_OUT > $NEATO_OUT
+dotty $NEATO_OUT
+rm $ODEP_OUT $NEATO_OUT
